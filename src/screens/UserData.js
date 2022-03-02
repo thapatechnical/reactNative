@@ -1,7 +1,19 @@
 import { View, Text, FlatList, StyleSheet, Image } from "react-native";
 import React, { useState, useEffect } from "react";
+import { useFonts, WorkSans_400Regular } from "@expo-google-fonts/work-sans";
+import { Nunito_700Bold } from "@expo-google-fonts/nunito";
+import AppLoading from "expo-app-loading";
 
 const UserData = () => {
+  let [fontsLoaded] = useFonts({
+    WorkSans_400Regular,
+    Nunito_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    <AppLoading />;
+  }
+
   const [isLoaded, setIsLoaded] = useState(true);
   const [myData, setMyData] = useState([]);
 
@@ -70,10 +82,10 @@ const styles = StyleSheet.create({
   },
   card: {
     width: 250,
-    height: 350,
+    // height: 350,
     backgroundColor: "#fff",
     borderRadius: 5,
-    margin: 20,
+    marginHorizontal: 20,
   },
   bioDataContainer: {
     width: "100%",
@@ -83,24 +95,25 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: "#353535",
     paddingVertical: 10,
-    fontFamily: "JosefinSans_400Regular",
+    fontFamily: "WorkSans_400Regular",
   },
   idNumber: {
     fontSize: 20,
     color: "rgba(255, 255, 255, 0.5)",
-    fontFamily: "JosefinSans_400Regular",
+    fontFamily: "WorkSans_400Regular",
     paddingRight: 10,
   },
   bioData: {
     fontSize: 30,
     color: "#fff",
-    fontFamily: "JosefinSans_400Regular",
+    fontFamily: "WorkSans_400Regular",
   },
   mainHeader: {
     fontSize: 30,
     color: "#a18ce5",
     textAlign: "center",
-    fontFamily: "JosefinSans_400Regular",
+    fontFamily: "WorkSans_400Regular",
+    paddingVertical: 50,
   },
   imgContainer: {
     padding: 10,
@@ -114,6 +127,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#353535",
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
+    paddingBottom: 20,
   },
   myName: {
     fontSize: 14,
@@ -121,7 +135,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: "flex-start",
     textTransform: "capitalize",
-    fontFamily: "JosefinSans_400Regular",
+    fontFamily: "WorkSans_400Regular",
   },
 });
 

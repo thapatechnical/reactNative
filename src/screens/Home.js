@@ -1,8 +1,19 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import Menu from "../component/Menu";
+import { useFonts, WorkSans_400Regular } from "@expo-google-fonts/work-sans";
+import { Nunito_700Bold } from "@expo-google-fonts/nunito";
+import AppLoading from "expo-app-loading";
 
 const Home = (props) => {
+  let [fontsLoaded] = useFonts({
+    WorkSans_400Regular,
+    Nunito_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    <AppLoading />;
+  }
   const description =
     "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. ";
 
@@ -78,17 +89,17 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "#344055",
     textTransform: "uppercase",
-    fontFamily: "Nunito_600SemiBold",
+    fontFamily: "Nunito_700Bold",
   },
 
   paraStyle: {
     textAlign: "left",
-    fontSize: 19,
+    fontSize: 18,
     color: "#7d7d7d",
     marginTop: 30,
     paddingBottom: 50,
-    lineHeight: 26,
-    fontFamily: "JosefinSans_400Regular",
+    lineHeight: 27,
+    fontFamily: "WorkSans_400Regular",
   },
 
   lineStyle: {

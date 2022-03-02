@@ -1,8 +1,20 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import Courses from "../api/Courseapi";
+import { useFonts, WorkSans_400Regular } from "@expo-google-fonts/work-sans";
+import { Nunito_700Bold } from "@expo-google-fonts/nunito";
+import AppLoading from "expo-app-loading";
 
 const CourseDetails = ({ navigation, route }) => {
+  let [fontsLoaded] = useFonts({
+    WorkSans_400Regular,
+    Nunito_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    <AppLoading />;
+  }
+
   const id = route.params.courseId;
   console.log(id);
 
@@ -25,11 +37,17 @@ const CourseDetails = ({ navigation, route }) => {
 
         <Text style={styles.description}>{selectedCourse.description}</Text>
 
-        <Text style={styles.description}>{selectedCourse.course1}</Text>
+        <Text style={[styles.description, styles.subCourse]}>
+          {selectedCourse.course1}
+        </Text>
 
-        <Text style={styles.description}>{selectedCourse.course2}</Text>
+        <Text style={[styles.description, styles.subCourse]}>
+          {selectedCourse.course2}
+        </Text>
 
-        <Text style={styles.description}>{selectedCourse.course3}</Text>
+        <Text style={[styles.description, styles.subCourse]}>
+          {selectedCourse.course3}
+        </Text>
 
         <View style={styles.buttonContainer}>
           <Text style={styles.price}> {selectedCourse.price} </Text>
@@ -81,7 +99,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     paddingTop: 10,
     paddingBottom: 15,
-    fontFamily: "JosefinSans_500Medium",
+    fontFamily: "Nunito_700Bold",
     textAlign: "center",
   },
 
@@ -91,7 +109,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     fontWeight: "500",
     paddingBottom: 15,
-    fontFamily: "JosefinSans_500Medium",
+    fontFamily: "WorkSans_400Regular",
     textAlign: "center",
   },
 
@@ -100,9 +118,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#7d7d7d",
     paddingBottom: 20,
-    fontFamily: "JosefinSans_300Light",
+    fontFamily: "WorkSans_400Regular",
     lineHeight: 20,
   },
+  subCourse: {
+    textTransform: "uppercase",
+    color: "#344055",
+  },
+
   buttonContainer: {
     display: "flex",
     flexDirection: "row",
@@ -120,7 +143,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 1,
     borderTopLeftRadius: 1,
     fontSize: 20,
-    fontFamily: "JosefinSans_400Regular",
+    fontFamily: "WorkSans_400Regular",
     textAlign: "center",
   },
   buttonStyle: {
@@ -136,7 +159,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     color: "#eee",
-    fontFamily: "JosefinSans_400Regular",
+    fontFamily: "WorkSans_400Regular",
   },
 });
 

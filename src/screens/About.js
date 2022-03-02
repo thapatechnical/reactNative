@@ -7,8 +7,20 @@ import {
   Image,
 } from "react-native";
 import React from "react";
+import { useFonts, WorkSans_400Regular } from "@expo-google-fonts/work-sans";
+import { Nunito_700Bold } from "@expo-google-fonts/nunito";
+import AppLoading from "expo-app-loading";
 
 const About = () => {
+  let [fontsLoaded] = useFonts({
+    WorkSans_400Regular,
+    Nunito_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    <AppLoading />;
+  }
+
   return (
     <View style={styles.aboutContainer}>
       <Text style={styles.mainHeader}> Vinod bahadur thapa </Text>
@@ -94,19 +106,22 @@ const styles = StyleSheet.create({
     color: "#344055",
     textTransform: "uppercase",
     fontWeight: "500",
-    marginTop: 50,
+    // marginTop: 50,
+    marginTop: 40,
     marginBottom: 10,
-    fontFamily: "JosefinSans_700Bold",
+    fontFamily: "Nunito_700Bold",
   },
   paraStyle: {
     fontSize: 18,
     color: "#7d7d7d",
     paddingBottom: 30,
+    fontFamily: "WorkSans_400Regular",
   },
   aboutLayout: {
     backgroundColor: "#4c5dab",
     paddingHorizontal: 30,
-    marginVertical: 30,
+    // marginVertical: 30,
+    marginTop: 20,
   },
   aboutSubHeader: {
     fontSize: 18,
@@ -114,11 +129,14 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     fontWeight: "500",
     marginVertical: 15,
-    fontFamily: "JosefinSans_700Bold",
+    fontFamily: "Nunito_700Bold",
     alignSelf: "center",
   },
   aboutPara: {
     color: "#fff",
+    fontSize: 18,
+    fontFamily: "WorkSans_400Regular",
+    lineHeight: 26,
   },
   menuContainer: {
     width: "100%",

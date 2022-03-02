@@ -9,8 +9,20 @@ import {
 } from "react-native";
 import React from "react";
 import Courses from "../api/Courseapi";
+import { useFonts, WorkSans_400Regular } from "@expo-google-fonts/work-sans";
+import { Nunito_700Bold } from "@expo-google-fonts/nunito";
+import AppLoading from "expo-app-loading";
 
 const Course = ({ navigation }) => {
+  let [fontsLoaded] = useFonts({
+    WorkSans_400Regular,
+    Nunito_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    <AppLoading />;
+  }
+
   const courseCard = ({ item }) => {
     return (
       <View style={styles.mainContainer}>
@@ -80,11 +92,11 @@ const styles = StyleSheet.create({
     // fontWeight: 500,
     paddingBottom: 15,
     textAlign: "center",
-    fontFamily: "Nunito_600SemiBold",
+    fontFamily: "Nunito_700Bold",
   },
   description: {
     textAlign: "left",
-    fontFamily: "JosefinSans_400Regular",
+    fontFamily: "WorkSans_400Regular",
     paddingBottom: 15,
     lineHeight: 20,
     fontSize: 16,
@@ -107,7 +119,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     color: "#eee",
-    fontFamily: "JosefinSans_500Medium",
+    fontFamily: "WorkSans_400Regular",
     textTransform: "capitalize",
   },
 });
